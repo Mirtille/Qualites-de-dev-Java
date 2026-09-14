@@ -1,5 +1,6 @@
 package TP2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,5 +13,32 @@ public class Etudiant {
         this.identite = identite;
         this.formation = formation;
         this.resultat = new HashMap<>();
+    }
+
+    public void ajouterNote(Matiere m, double note) {
+        if (note < 0 || note > 20) {
+            throw new IllegalArgumentException("La note doit etre entre 0 et 20");
+        }
+        if (formation.getCoeff(m) <= 0) {
+            throw new IllegalArgumentException("Matiere absente");
+        }
+        if (!resultat.containsKey(m)) {
+            resultat.put(m, new ArrayList<>());
+        }
+        resultat.get(m).add(note);
+    }
+
+    public double calculerMoyenne(Matiere m) {
+        if (this.formation.getCoeff(m) <= 0){
+            throw new IllegalArgumentException("Matiere absente");
+        }
+        if (!resultat.containsKey(m) || resultat.get(m).isEmpty()) {
+            return 0.0;
+        }
+        double moyenne = 0;
+        for (double note : resultat.get(m)) {
+            moyenne += note;
+        }
+        return moyenne/resultat.get(m).size();
     }
 }
