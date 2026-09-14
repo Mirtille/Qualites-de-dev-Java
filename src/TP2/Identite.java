@@ -1,3 +1,5 @@
+package TP2;
+
 public class Identite {
 
     private String nom;
