@@ -55,4 +55,8 @@ public class Etudiant {
         }
         return sommeNotes / sommeCoeff;
     }
+
+    public Formation getFormation() {
+        return formation;
+    }
 }
