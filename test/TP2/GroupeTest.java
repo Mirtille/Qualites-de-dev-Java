@@ -51,13 +51,15 @@ class GroupeTest {
         Matiere maths = new Matiere("Maths");
         formation1.ajouterMatiere(maths, 2.0f);
 
+        Etudiant etudiantMemeFormation = new Etudiant(new Identite("Test", "Paul", "E003"), formation1);
+
         groupe.ajouterEtudiant(etudiant1);
-        groupe.ajouterEtudiant(etudiant2);
+        groupe.ajouterEtudiant(etudiantMemeFormation);
 
         etudiant1.ajouterNote(maths, 10.0);
-        etudiant1.ajouterNote(maths, 14.0); // Moyenne etudiant1 = 12.0
+        etudiant1.ajouterNote(maths, 14.0); // Moyenne = 12.0
 
-        etudiant2.ajouterNote(maths, 16.0); // Moyenne etudiant2 = 16.0
+        etudiantMemeFormation.ajouterNote(maths, 16.0); // Moyenne = 16.0
 
         assertEquals(14.0, groupe.calculerMoyenne(maths), 0.001);
     }
@@ -69,14 +71,16 @@ class GroupeTest {
         formation1.ajouterMatiere(maths, 2.0f);
         formation1.ajouterMatiere(info, 3.0f);
 
+        Etudiant etudiantMemeFormation = new Etudiant(new Identite("Test", "Paul", "E003"), formation1);
+
         groupe.ajouterEtudiant(etudiant1);
-        groupe.ajouterEtudiant(etudiant2);
+        groupe.ajouterEtudiant(etudiantMemeFormation);
 
         etudiant1.ajouterNote(maths, 10.0);
         etudiant1.ajouterNote(info, 15.0);
 
-        etudiant2.ajouterNote(maths, 14.0);
-        etudiant2.ajouterNote(info, 10.0);
+        etudiantMemeFormation.ajouterNote(maths, 14.0);
+        etudiantMemeFormation.ajouterNote(info, 10.0);
 
         assertEquals(12.3, groupe.calculerMoyenneGenerale(), 0.001);
     }
