@@ -41,4 +41,18 @@ public class Etudiant {
         }
         return moyenne/resultat.get(m).size();
     }
+
+    public double calculerMoyenneGenerale() {
+        double sommeNotes = 0.0;
+        double sommeCoeff = 0.0;
+        for (Matiere m : this.formation.getMatieres()) {
+            float coeff = this.formation.getCoeff(m);
+            sommeNotes += this.calculerMoyenne(m) * coeff;
+            sommeCoeff += coeff;
+        }
+        if (sommeCoeff == 0.0) {
+            return 0.0;
+        }
+        return sommeNotes / sommeCoeff;
+    }
 }
