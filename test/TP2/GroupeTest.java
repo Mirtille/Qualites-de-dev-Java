@@ -45,4 +45,39 @@ class GroupeTest {
         groupe.supprimerEtudiant(etudiant1);
         assertFalse(groupe.getEtudiants().contains(etudiant1));
     }
+
+    @Test
+    void testCalculerMoyenneMatiereGroupe() {
+        Matiere maths = new Matiere("Maths");
+        formation1.ajouterMatiere(maths, 2.0f);
+
+        groupe.ajouterEtudiant(etudiant1);
+        groupe.ajouterEtudiant(etudiant2);
+
+        etudiant1.ajouterNote(maths, 10.0);
+        etudiant1.ajouterNote(maths, 14.0); // Moyenne etudiant1 = 12.0
+
+        etudiant2.ajouterNote(maths, 16.0); // Moyenne etudiant2 = 16.0
+
+        assertEquals(14.0, groupe.calculerMoyenne(maths), 0.001);
+    }
+
+    @Test
+    void testCalculerMoyenneGeneraleGroupe() {
+        Matiere maths = new Matiere("Maths");
+        Matiere info = new Matiere("Info");
+        formation1.ajouterMatiere(maths, 2.0f);
+        formation1.ajouterMatiere(info, 3.0f);
+
+        groupe.ajouterEtudiant(etudiant1);
+        groupe.ajouterEtudiant(etudiant2);
+
+        etudiant1.ajouterNote(maths, 10.0);
+        etudiant1.ajouterNote(info, 15.0);
+
+        etudiant2.ajouterNote(maths, 14.0);
+        etudiant2.ajouterNote(info, 10.0);
+
+        assertEquals(12.3, groupe.calculerMoyenneGenerale(), 0.001);
+    }
 }
