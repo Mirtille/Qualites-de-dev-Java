@@ -28,4 +28,8 @@ public class Groupe {
     public void supprimerEtudiant(Etudiant e) {
         this.etudiants.remove(e);
     }
+
+    public List<Etudiant> getEtudiants() {
+        return this.etudiants;
+    }
 }
