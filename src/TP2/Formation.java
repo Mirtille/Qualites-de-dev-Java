@@ -14,7 +14,12 @@ public class Formation {
         this.formation.put(m, coeff);
     }
 
-    public float getCoeff(Matiere m) { return this.formation.get(m); }
+    public float getCoeff(Matiere m) {
+        if (!this.formation.containsKey(m)) {
+            return 0.0f;
+        }
+        return this.formation.get(m);
+    }
 
     public Set<Matiere> getMatieres() {
         return this.formation.keySet();
