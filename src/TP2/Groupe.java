@@ -32,4 +32,30 @@ public class Groupe {
     public List<Etudiant> getEtudiants() {
         return this.etudiants;
     }
+
+    public double calculerMoyenne(Matiere m){
+        if (formation.getCoeff(m) <= 0){
+            throw new IllegalArgumentException("Matiere absente");
+        }
+        if (this.etudiants.isEmpty()) {
+            return 0.0;
+        }
+        double somme = 0.0;
+        for (Etudiant e : this.etudiants) {
+            somme += e.calculerMoyenne(m);
+        }
+
+        return somme / this.etudiants.size();
+    }
+
+    public double calculerMoyenneGenerale() {
+        if (this.etudiants.isEmpty()) {
+            return 0.0;
+        }
+        double somme = 0.0;
+        for (Etudiant e : this.etudiants) {
+            somme += e.calculerMoyenneGenerale();
+        }
+        return somme / this.etudiants.size();
+    }
 }
