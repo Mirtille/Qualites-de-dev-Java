@@ -75,4 +75,11 @@ public class Groupe {
                 .reversed());
         return copie;
     }
+
+    public List<Etudiant> triParMerite() {
+        List<Etudiant> copie = new ArrayList<>(this.etudiants);
+        copie.sort(Comparator.comparingDouble((Etudiant e) -> e.calculerMoyenneGenerale())
+                .reversed());
+        return copie;
+    }
 }

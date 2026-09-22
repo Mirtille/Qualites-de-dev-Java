@@ -133,9 +133,33 @@ class GroupeTest {
 
         List<Etudiant> tries = groupe.triAlpha();
 
-        // Doit conserver les deux étudiants et départager sur le prénom
         assertEquals(2, tries.size());
         assertEquals("Alice", tries.get(0).getIdentite().getPrenom());
         assertEquals("Zoe", tries.get(1).getIdentite().getPrenom());
+    }
+
+    @Test
+    void testTriParMerite() {
+        Matiere info = new Matiere("Info");
+        formation1.ajouterMatiere(info, 1.0f);
+
+        Etudiant ePremier = new Etudiant(new Identite("A", "Jean", "01"), formation1);
+        Etudiant eDeuxieme = new Etudiant(new Identite("B", "Paul", "02"), formation1);
+        Etudiant eDernier = new Etudiant(new Identite("C", "Luc", "03"), formation1);
+
+        ePremier.ajouterNote(info, 18.0);
+        eDeuxieme.ajouterNote(info, 14.0);
+        eDernier.ajouterNote(info, 9.0);
+
+        groupe.ajouterEtudiant(eDeuxieme);
+        groupe.ajouterEtudiant(eDernier);
+        groupe.ajouterEtudiant(ePremier);
+
+        List<Etudiant> classement = groupe.triParMerite();
+
+        assertEquals(3, classement.size());
+        assertEquals(ePremier, classement.get(0));
+        assertEquals(eDeuxieme, classement.get(1));
+        assertEquals(eDernier, classement.get(2));
     }
 }
