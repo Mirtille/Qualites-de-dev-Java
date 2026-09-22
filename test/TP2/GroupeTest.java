@@ -3,6 +3,8 @@ package TP2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GroupeTest {
@@ -83,5 +85,57 @@ class GroupeTest {
         etudiantMemeFormation.ajouterNote(info, 10.0);
 
         assertEquals(12.3, groupe.calculerMoyenneGenerale(), 0.001);
+    }
+
+    @Test
+    void testTriAlpha() {
+        Etudiant e1 = new Etudiant(new Identite("Zidane", "Zinedine", "E10"), formation1);
+        Etudiant e2 = new Etudiant(new Identite("Dupont", "Alice", "E11"), formation1);
+        Etudiant e3 = new Etudiant(new Identite("Bernard", "Lucas", "E12"), formation1);
+
+        groupe.ajouterEtudiant(e1);
+        groupe.ajouterEtudiant(e2);
+        groupe.ajouterEtudiant(e3);
+
+        List<Etudiant> tries = groupe.triAlpha();
+
+        assertEquals(3, tries.size());
+        assertEquals("Bernard", tries.get(0).getIdentite().getNom());
+        assertEquals("Dupont", tries.get(1).getIdentite().getNom());
+        assertEquals("Zidane", tries.get(2).getIdentite().getNom());
+    }
+
+    @Test
+    void testTriAntiAlpha() {
+        Etudiant e1 = new Etudiant(new Identite("Zidane", "Zinedine", "E10"), formation1);
+        Etudiant e2 = new Etudiant(new Identite("Dupont", "Alice", "E11"), formation1);
+        Etudiant e3 = new Etudiant(new Identite("Bernard", "Lucas", "E12"), formation1);
+
+        groupe.ajouterEtudiant(e1);
+        groupe.ajouterEtudiant(e2);
+        groupe.ajouterEtudiant(e3);
+
+        List<Etudiant> tries = groupe.triAntiAlpha();
+
+        assertEquals(3, tries.size());
+        assertEquals("Zidane", tries.get(0).getIdentite().getNom());
+        assertEquals("Dupont", tries.get(1).getIdentite().getNom());
+        assertEquals("Bernard", tries.get(2).getIdentite().getNom());
+    }
+
+    @Test
+    void testTriAlphaHomonymes() {
+        Etudiant e1 = new Etudiant(new Identite("Dupont", "Zoe", "E20"), formation1);
+        Etudiant e2 = new Etudiant(new Identite("Dupont", "Alice", "E21"), formation1);
+
+        groupe.ajouterEtudiant(e1);
+        groupe.ajouterEtudiant(e2);
+
+        List<Etudiant> tries = groupe.triAlpha();
+
+        // Doit conserver les deux étudiants et départager sur le prénom
+        assertEquals(2, tries.size());
+        assertEquals("Alice", tries.get(0).getIdentite().getPrenom());
+        assertEquals("Zoe", tries.get(1).getIdentite().getPrenom());
     }
 }

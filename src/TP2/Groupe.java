@@ -1,7 +1,9 @@
 package TP2;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Groupe {
 
@@ -57,5 +59,20 @@ public class Groupe {
             somme += e.calculerMoyenneGenerale();
         }
         return somme / this.etudiants.size();
+    }
+
+    public List<Etudiant> triAlpha() {
+        List<Etudiant> copie = new ArrayList<>(this.etudiants);
+        copie.sort(Comparator.comparing((Etudiant e) -> e.getIdentite().getNom())
+                .thenComparing(e -> e.getIdentite().getPrenom()));
+        return copie;
+    }
+
+    public List<Etudiant> triAntiAlpha() {
+        List<Etudiant> copie = new ArrayList<>(this.etudiants);
+        copie.sort(Comparator.comparing((Etudiant e) -> e.getIdentite().getNom())
+                .thenComparing(e -> e.getIdentite().getPrenom())
+                .reversed());
+        return copie;
     }
 }
