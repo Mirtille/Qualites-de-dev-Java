@@ -1,9 +1,6 @@
 package TP2;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Groupe {
 
@@ -55,7 +52,9 @@ public class Groupe {
             return 0.0;
         }
         double somme = 0.0;
-        for (Etudiant e : this.etudiants) {
+        Iterator<Etudiant> it = this.etudiants.iterator();
+        while (it.hasNext()) {
+            Etudiant e = it.next();
             somme += e.calculerMoyenneGenerale();
         }
         return somme / this.etudiants.size();
