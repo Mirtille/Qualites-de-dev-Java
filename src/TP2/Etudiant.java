@@ -59,4 +59,8 @@ public class Etudiant {
     public Formation getFormation() {
         return formation;
     }
+
+    public Identite getIdentite() {
+        return identite;
+    }
 }

@@ -3,6 +3,8 @@ package TP2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GroupeTest {
@@ -12,6 +14,8 @@ class GroupeTest {
     private Groupe groupe;
     private Etudiant etudiant1;
     private Etudiant etudiant2;
+    private Etudiant etudiant3;
+    private Etudiant etudiant4;
 
     @BeforeEach
     void setUp() {
@@ -21,9 +25,13 @@ class GroupeTest {
 
         Identite id1 = new Identite("Dupont", "Jean", "E001");
         Identite id2 = new Identite("Martin", "Claire", "E002");
+        Identite id3 = new Identite("Couturier", "Alexis", "E003");
+        Identite id4 = new Identite("Dartoy", "Gauthier", "E004");
 
         etudiant1 = new Etudiant(id1, formation1);
         etudiant2 = new Etudiant(id2, formation2);
+        etudiant3 = new Etudiant(id3, formation1);
+        etudiant4 = new Etudiant(id4, formation1);
     }
 
     @Test
@@ -83,5 +91,29 @@ class GroupeTest {
         etudiantMemeFormation.ajouterNote(info, 10.0);
 
         assertEquals(12.3, groupe.calculerMoyenneGenerale(), 0.001);
+    }
+
+    @Test
+    void testTriAlpha(){
+        groupe.ajouterEtudiant(etudiant1);
+        groupe.ajouterEtudiant(etudiant3);
+        groupe.ajouterEtudiant(etudiant4);
+        groupe.triAlpha();
+        List<Etudiant> tries = groupe.triAlpha();
+        assertEquals(etudiant3, tries.get(0));
+        assertEquals(etudiant4, tries.get(1));
+        assertEquals(etudiant1, tries.get(2));
+    }
+
+    @Test
+    void testTriAntiAlpha(){
+        groupe.ajouterEtudiant(etudiant1);
+        groupe.ajouterEtudiant(etudiant3);
+        groupe.ajouterEtudiant(etudiant4);
+        groupe.triAntiAlpha();
+        List<Etudiant> tries = groupe.triAntiAlpha();
+        assertEquals(etudiant1, tries.get(0));
+        assertEquals(etudiant4, tries.get(1));
+        assertEquals(etudiant3, tries.get(2));
     }
 }
