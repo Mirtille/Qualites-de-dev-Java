@@ -5,8 +5,8 @@ import java.util.NoSuchElementException;
 
 public abstract class Parcours implements Iterator<Integer> {
 
-    private TableauEntier tabEntier;
-    private int ligneCour, colonneCour, nbParcour;
+    protected TableauEntier tabEntier;
+    protected int ligneCour, colonneCour, nbParcour;
 
     public Parcours(TableauEntier tabEntier) {
         this.tabEntier = tabEntier;
