@@ -46,4 +46,24 @@ class TableauEntierTest {
 
         assertEquals(attendu, resultat);
     }
+
+    @Test
+    void testIterateurColonne() {
+        int[][] donnees = {
+                {1, 2, 3},
+                {4, 5, 6}
+        };
+        TableauEntier tableau = new TableauEntier(donnees);
+
+        ParcoursColonne it = tableau.iterateurColonne();
+        List<Integer> resultat = new ArrayList<>();
+
+        while (it.hasNext()) {
+            resultat.add(it.next());
+        }
+
+        List<Integer> attendu = List.of(1, 4, 2, 5, 3, 6);
+
+        assertEquals(attendu, resultat);
+    }
 }
