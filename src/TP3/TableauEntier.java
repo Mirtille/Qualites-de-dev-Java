@@ -1,6 +1,8 @@
 package TP3;
 
-public class TableauEntier {
+import java.util.Iterator;
+
+public class TableauEntier implements Iterable<Integer> {
 
     private int[][] tab;
 
@@ -33,5 +35,10 @@ public class TableauEntier {
 
     public ParcoursColonne iterateurColonne() {
         return new ParcoursColonne(this);
+    }
+
+    @Override
+    public Iterator<Integer> iterator(){
+        return iterateurZigZag();
     }
 }
