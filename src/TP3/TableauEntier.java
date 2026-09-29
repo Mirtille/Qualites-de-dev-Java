@@ -30,4 +30,8 @@ public class TableauEntier {
     public ParcoursZigZag iterateurZigZag() {
         return new ParcoursZigZag(this);
     }
+
+    public ParcoursColonne iterateurColonne() {
+        return new ParcoursColonne(this);
+    }
 }
