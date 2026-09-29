@@ -66,4 +66,22 @@ class TableauEntierTest {
 
         assertEquals(attendu, resultat);
     }
+
+    @Test
+    void testIterationSimplifieeZigzag() {
+        int[][] donnees = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+        TableauEntier tableau = new TableauEntier(donnees);
+
+        List<Integer> resultatForEach = new ArrayList<>();
+        for (int val : tableau) {
+            resultatForEach.add(val);
+        }
+
+        List<Integer> attendu = List.of(1, 2, 3, 6, 5, 4, 7, 8, 9);
+        assertEquals(attendu, resultatForEach);
+    }
 }
