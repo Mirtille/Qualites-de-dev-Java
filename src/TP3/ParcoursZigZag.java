@@ -1,8 +1,8 @@
 package TP3;
 
-public class ParcoursZigzag extends Parcours{
+public class ParcoursZigZag extends Parcours{
 
-    public ParcoursZigzag(TableauEntier tabEntier) {
+    public ParcoursZigZag(TableauEntier tabEntier) {
         super(tabEntier);
     }
 
