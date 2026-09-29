@@ -9,7 +9,6 @@ class TableauEntierTest {
 
     @Test
     void testIterateurLigne() {
-        // Matrice 2x3 de test
         int[][] donnees = {
                 {1, 2, 3},
                 {4, 5, 6}
@@ -24,6 +23,26 @@ class TableauEntierTest {
         }
 
         List<Integer> attendu = List.of(1, 2, 3, 4, 5, 6);
+
+        assertEquals(attendu, resultat);
+    }
+
+    @Test
+    void testIterateurZigZag() {
+        int[][] donnees = {
+                {1, 2, 3},
+                {4, 5, 6}
+        };
+        TableauEntier tableau = new TableauEntier(donnees);
+
+        ParcoursZigZag it = tableau.iterateurZigZag();
+        List<Integer> resultat = new ArrayList<>();
+
+        while (it.hasNext()) {
+            resultat.add(it.next());
+        }
+
+        List<Integer> attendu = List.of(1, 2, 3, 6, 5, 4);
 
         assertEquals(attendu, resultat);
     }
