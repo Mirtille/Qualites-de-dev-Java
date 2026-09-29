@@ -22,4 +22,8 @@ public class TableauEntier {
         }
         return this.tab[0].length;
     }
+
+    public ParcoursLigne iterateurLigne() {
+        return new ParcoursLigne(this);
+    }
 }
