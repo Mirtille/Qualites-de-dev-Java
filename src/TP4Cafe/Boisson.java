@@ -1,4 +1,4 @@
-package TP4;
+package TP4Cafe;
 
 /**
  * Classe abstraite representant une boisson 

@@ -1,4 +1,4 @@
-package TP4;
+package TP4Cafe;
 
 public class PrincipalCafe {
     public static void main(String[] args) {

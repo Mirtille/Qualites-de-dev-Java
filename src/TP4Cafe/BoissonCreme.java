@@ -1,4 +1,4 @@
-package TP4;
+package TP4Cafe;
 
 public class BoissonCreme extends DecorateurIngredient {
 

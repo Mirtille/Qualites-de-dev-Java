@@ -1,4 +1,4 @@
-package TP4;
+package TP4Cafe;
 
 public abstract class DecorateurIngredient extends Boisson {
 	protected Boisson composant;

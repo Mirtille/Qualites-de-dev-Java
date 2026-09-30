@@ -1,20 +1,20 @@
-package TP4;
+package TP4Cafe;
 
 /**
  * Classe correspondant a une boisson Colombia
  * 
  */
-public class Colombia extends Boisson {
+public class Expresso extends Boisson {
 	
-	public Colombia(){
-		description = " Colombia";
+	public Expresso() {
+		description = " Expresso";
 	}
-	
+
 	/**
 	 * @return prix de la boisson
 	 */
 	public double cout() {
-		return 1.3;
+		return 1.95;
 	}
-
+	
 }

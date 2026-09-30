@@ -1,4 +1,4 @@
-package TP4;
+package TP4Cafe;
 
 public class Deca extends Boisson {
 
