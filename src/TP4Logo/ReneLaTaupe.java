@@ -1,7 +1,7 @@
 package TP4Logo;
 
 
-public class ReneLaTaupe{
+public class ReneLaTaupe extends Logo{
 	/**
      * Chemin d'acces au fichier
      * contenant l'image de fond du logo
@@ -24,6 +24,7 @@ public class ReneLaTaupe{
     /**
      * @return l'objet de MyImage correspondant a nomIm
      */
+    @Override
     public MyImage getLogo(){
         return new MyImage(nomIm);
     }
@@ -31,6 +32,7 @@ public class ReneLaTaupe{
     /**
      * @return le prix du logo
      */
+    @Override
     public double combienCaCoute(){
         return prix;
     }
