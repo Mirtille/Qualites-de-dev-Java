@@ -1,4 +1,4 @@
-package cafe;
+package TP4;
 
 /**
  * Classe permettant l'ajout de chantilly à une boisson 
