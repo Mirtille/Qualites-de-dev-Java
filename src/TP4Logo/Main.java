@@ -15,10 +15,13 @@ public class Main
         i.paintOver("img/Sunglasses.png", 255,76);
         i.display();  // Permet l'affichage dans une fenetre de l'image associee
         */
-        Logo monLogo = new Lunette(new Chapeau(new ReneLaTaupe()));
-        monLogo.getLogo().display();
-        System.out.println("Prix total : " + monLogo.CombienCaCoute() + " €");
-        
+        Logo rene = new Lunette(new Chapeau(new ReneLaTaupe()));
+        rene.getLogo().display();
+        System.out.println("Prix total : " + rene.CombienCaCoute() + " €");
+
+        Logo frog = new Lunette(new Chapeau(new CrazyFrog()));
+        frog.getLogo().display();
+        System.out.println("Prix total : " + frog.CombienCaCoute() + " €");
         
     }
         
