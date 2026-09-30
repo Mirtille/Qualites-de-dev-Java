@@ -1,4 +1,4 @@
-package logo;
+package TP4Logo;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
