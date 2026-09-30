@@ -4,5 +4,5 @@ public abstract class Logo {
 
     public abstract MyImage getLogo();
 
-    public abstract double combienCaCoute();
+    public abstract double CombienCaCoute();
 }
