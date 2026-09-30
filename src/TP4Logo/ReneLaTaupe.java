@@ -33,7 +33,7 @@ public class ReneLaTaupe extends Logo{
      * @return le prix du logo
      */
     @Override
-    public double combienCaCoute(){
+    public double CombienCaCoute(){
         return prix;
     }
 }
