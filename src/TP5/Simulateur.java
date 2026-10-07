@@ -20,4 +20,11 @@ public class Simulateur{
         }
         return stats;
     }
+
+    public void ecrireStats(Map<String, Integer> stats) {
+        System.out.println("--- Statistiques de circulation ---");
+        for (Map.Entry<String, Integer> entree : stats.entrySet()) {
+            System.out.println(entree.getKey() + " : " + entree.getValue() + " véhicules");
+        }
+    }
 }
