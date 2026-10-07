@@ -31,5 +31,11 @@ public class MainSimulation {
         Simulateur sim4 = new Simulateur(fPerso);
         Map<String, Integer> stats4 = sim4.genererStats();
         sim4.ecrireStats(stats4);
+
+        System.out.println("\n=== Test Fabrique Jonction (Voiture / Pieton) ===");
+        FabriqueVehicule fJonction = new FabriqueJonction(new FabriqueVoiture(), new FabriquePieton());
+        Simulateur simJonction = new Simulateur(fJonction);
+        Map<String, Integer> statsJonction = simJonction.genererStats();
+        simJonction.ecrireStats(statsJonction);
     }
 }
