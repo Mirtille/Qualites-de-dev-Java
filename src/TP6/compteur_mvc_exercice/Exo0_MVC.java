@@ -22,6 +22,9 @@ public class Exo0_MVC extends Application {
         vue.setMinWidth(70);
         vue.setAlignment(Pos.CENTER);
 
+        VueConsole vueConsole = new VueConsole();
+        modele.enregistrerObservateur(vueConsole);
+
         Controler control= new Controler(model);  //Creation du controleur - le modele en parametre
 
         VBox hb= new VBox(10);
