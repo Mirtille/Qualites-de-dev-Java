@@ -18,11 +18,13 @@ public class ModelCompteur implements Sujet {
 	 */
 	private ArrayList<Observateur> observateurs;
 
+	private int nbClics;
 	/**
 	 * Constructeur - met le compteur a 0
 	 */
 	public ModelCompteur(){
 		this.observateurs = new ArrayList<Observateur> ();
+		this.nbClics = 0;
 		this.compteur=0;
 	}
 	
@@ -34,6 +36,7 @@ public class ModelCompteur implements Sujet {
 	public void modifier(int incr){
 
 		this.compteur+=incr;
+		this.nbClics++;
 		notifierObservateurs();
 	}
 
@@ -44,6 +47,9 @@ public class ModelCompteur implements Sujet {
 		return compteur;
 	}
 
+	public int getNbClics() {
+        return this.nbClics;
+    }
 
 
 	/**

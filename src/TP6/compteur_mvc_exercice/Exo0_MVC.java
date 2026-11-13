@@ -17,13 +17,16 @@ public class Exo0_MVC extends Application {
     public void start(Stage stage) {
         ModelCompteur model = new ModelCompteur();			//Creation du modele
 
+        VueClics vueClics = new VueClics();
         VueGraphique vue = new VueGraphique(model);
+        VueConsole vueConsole = new VueConsole();
+
         model.enregistrerObservateur(vue); //La vue s'enregistre comme vue du modele
+        model.enregistrerObservateur(vueConsole);
+        model.enregistrerObservateur(vueClics);
+
         vue.setMinWidth(70);
         vue.setAlignment(Pos.CENTER);
-
-        VueConsole vueConsole = new VueConsole();
-        modele.enregistrerObservateur(vueConsole);
 
         Controler control= new Controler(model);  //Creation du controleur - le modele en parametre
 
@@ -40,7 +43,7 @@ public class Exo0_MVC extends Application {
         bmoins.setMinHeight(40);
         bmoins.setOnAction (control);
 
-        hb.getChildren().addAll(bmoins, vue,bplus);
+        hb.getChildren().addAll(vueClics, bmoins, vue, bplus);
 
         Scene scene = new Scene(hb);
         stage.setTitle("MVC");
