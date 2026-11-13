@@ -1,14 +1,13 @@
 package TP6.exercice_mvc;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.geometry.Insets;
 
 public class PrincipaleIG extends Application {
 
@@ -16,46 +15,54 @@ public class PrincipaleIG extends Application {
         launch(args);
     }
 
+    @Override
     public void start(Stage stage) {
-        TextField control, vMin,vMax;
-        TextArea vListe;
+        // 1. Création du modèle
+        ModeleMots modele = new ModeleMots();
+
+        // 2. Création des vues et abonnement au modèle
+        VueListeMots vListe = new VueListeMots();
+        VuePlusGrand vMax = new VuePlusGrand();
+        VuePlusPetit vMin = new VuePlusPetit();
+
+        modele.enregistrerObservateur(vListe);
+        modele.enregistrerObservateur(vMax);
+        modele.enregistrerObservateur(vMin);
+
+        // 3. Création du contrôleur
+        ControleurMots controleur = new ControleurMots(modele);
 
         // Panel principal
-        BorderPane bp= new BorderPane();
+        BorderPane bp = new BorderPane();
         bp.setPadding(new Insets(10));
 
-        //Panel haut
+        // Panel haut
         GridPane gpHaut = new GridPane();
         gpHaut.setPadding(new Insets(10));
         gpHaut.setHgap(25);
         gpHaut.setVgap(15);
-        control= new TextField();
-        gpHaut.add(new Label(" Donner une chaîne "),0,0,1,1);
-        gpHaut.add(control, 1,0,1,1);
 
-        bp.setTop(gpHaut); //place gpHaut en haut de l'IG
+        TextField control = new TextField();
+        control.setOnAction(controleur);
+
+        gpHaut.add(new Label(" Donner une chaîne "), 0, 0, 1, 1);
+        gpHaut.add(control, 1, 0, 1, 1);
+        bp.setTop(gpHaut);
 
         // Panel au centre
-        vListe = new TextArea();
-        bp.setCenter(vListe);  //place vListe au centre de l'IG
+        bp.setCenter(vListe);
 
         // Panel en bas
         GridPane gpBas = new GridPane();
         gpBas.setPadding(new Insets(10));
         gpBas.setHgap(25);
         gpBas.setVgap(15);
-        vMin = new TextField();
-        //vMin.setMaxWidth(225.0);
-        vMax = new TextField();
-        //vMax.setMaxWidth(225.0);
-        gpBas.add(new Label("     Plus grand mot     "), 0,0,1,1);
-        gpBas.add(vMax, 1,0,1,1);
-        gpBas.add(new Label("     Plus petit mot     "),0,1,1,1);
-        gpBas.add(vMin, 1,1,1,1);
 
-        // gpBas.setGridLinesVisible(true);
-
-        bp.setBottom(gpBas); //place gpBas en bas de l'IG
+        gpBas.add(new Label("     Plus grand mot     "), 0, 0, 1, 1);
+        gpBas.add(vMax, 1, 0, 1, 1);
+        gpBas.add(new Label("     Plus petit mot     "), 0, 1, 1, 1);
+        gpBas.add(vMin, 1, 1, 1, 1);
+        bp.setBottom(gpBas);
 
         Scene scene = new Scene(bp, 350, 350);
         stage.setScene(scene);
